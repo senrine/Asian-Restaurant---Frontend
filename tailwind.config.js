@@ -19,6 +19,11 @@ export default {
           yellow: "#FFA113",
         },
       },
+      fontSize:{
+        title: "text-[20px] lg:text-[24px]",
+        parapgraph : "text-[14px] lg:text-[18px]",
+        button : "text-[12px] md:text-[18px]"
+      },
       fontFamily:{
         'Bellefair': ['Bellefair', 'sans-serif'],
         'Poppins': ['Poppins', 'sans-serif']

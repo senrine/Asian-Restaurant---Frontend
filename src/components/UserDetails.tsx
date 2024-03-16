@@ -1,28 +1,23 @@
-import { FormEvent } from "react";
-import { useLogoutMutation } from "../features/userApi";
-import { deleteUser } from "../features/user";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+import LogoutBtn from "./LogoutBtn";
+import UpdateUserForm from "./UpdateUserForm";
 
 export default function UserDetails() {
-  const [logout] = useLogoutMutation();
-  const dispatch = useDispatch();
-  var users = useSelector((state: RootState) => state.user);
-
-  const handleClick = async (e: FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const response = await logout("").unwrap();
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
-    <button className="p-4" onClick={handleClick}>
-      Logout
-    </button>
+    <div className="flex flex-col w-full text-primary-white font-Poppins md:w-[60%] mx-auto">
+      <div className="mb-10 text-center w-[30%] mx-auto">
+      <h1 className="font-Bellefair text-primary-white xl:text-[28px] md:text-[26px] text-[24px]">
+        Update your profil
+      </h1>
+      <hr className="border-primary-red"/>
+      </div>
+      <UpdateUserForm />
+      <hr className="my-20 border-primary-white15" />
+      <div className="bottom-10 w-full">
+        <div className="flex justify-between items-center">
+          <h1 className="text-title">Logout here</h1>
+          <LogoutBtn />
+        </div>
+      </div>
+    </div>
   );
 }

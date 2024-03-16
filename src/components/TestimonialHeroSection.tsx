@@ -6,17 +6,17 @@ import halfStar from "../assets/Half Star.svg";
 
 export default function TestimonialHeroSection() {
   return (
-    <div className="flex-col md:flex-row md:py-10 md:-mt-24 lg:-mt-36 -mt-10 border border-primary-white15 bg-primary-black50 rounded-3xl mx-auto px-4 py-4 flex justify-between items-center w-[80%]">
+    <div className="flex-col md:flex-row md:-mt-36 -mt-10 border border-primary-white15 bg-primary-black50 rounded-3xl px-10 py-4 flex justify-between items-center w-[80%] md:w-[60%]">
       <div className="flex items-center justify-center max-sm:mb-4">
-        <img className="-mr-2 max-md:w-10 md:w-12" src={testimonial1} alt="" />
-        <img className="-mr-2 max-md:w-10 md:w-12" src={testimonial2} alt="" />
-        <img className="-mr-2 max-md:w-10 md:w-12" src={testimonial3} alt="" />
-        <span className="max-md:w-8 md:min-w-16 md:py-5 md:mr-10 bg-primary-black text-primary-white px-4 py-3 rounded-full flex items-center justify-center text-[12px] md:text-[24px]">
+        <img className="-mr-2" src={testimonial1} alt="" />
+        <img className="-mr-2 " src={testimonial2} alt="" />
+        <img className="-mr-2" src={testimonial3} alt="" />
+        <span className=" bg-primary-black90 text-primary-white px-3 py-4 rounded-full flex items-center justify-center text-parapgraph">
           +100
         </span>
       </div>
-      <div className="md:min-w-[50%] flex flex-col items-center justify-center">
-        <p className="mb-4 text-[16px] md:text-[28px]">What people think</p>
+      <div className="md:min-w-[50%] flex flex-col items-center justify-center font-Poppins">
+        <p className="mb-4 text-title">What people think</p>
         <div className="flex flex-col md:flex-row items-center">
           <div className="flex items-center max-md:mb-2">
             <img className="w-3 md:w-4" src={fullStar} alt="" />
@@ -25,7 +25,7 @@ export default function TestimonialHeroSection() {
             <img className="w-3 md:w-4" src={fullStar} alt="" />
             <img className="w-3 md:w-4" src={halfStar} alt="" />
           </div>
-          <p className="mt-1 text-[14px] md:text-[24px] md:ml-2">( 100 )</p>
+          <p className="mt-1 text-parapgraph md:ml-2">( 100 )</p>
         </div>
       </div>
     </div>

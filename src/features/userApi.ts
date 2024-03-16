@@ -1,55 +1,38 @@
 import { api } from "./api";
 
-export const userApi = api.injectEndpoints({
+export const menuApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    signup: builder.mutation({
-      query: (data) => ({
-        url: "/user/signup",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: data,
-        credentials: "include",
-      }),
-    }),
     login: builder.mutation({
       query: (data) => ({
-        url: "/user/login",
+        url: "/login",
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: data,
         credentials: "include",
+        body: data
       }),
     }),
-    getUser: builder.mutation({
+    signup: builder.mutation({
       query: (data) => ({
-        url: "/user",
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: data,
+        url: "/signup",
+        method: "POST",
         credentials: "include",
+        body: data
       }),
     }),
     logout: builder.mutation({
       query: () => ({
-        url: "/user",
+        url: "/logout",
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        credentials: "include"
+      }),
+    }),
+    updateUser: builder.mutation({
+      query: ({data,id}) => ({
+        url: `/users/${id}`,
+        method: "PUT",
         credentials: "include",
+        body: data
       }),
     }),
   }),
 });
-export const {
-  useSignupMutation,
-  useLoginMutation,
-  useGetUserMutation,
-  useLogoutMutation,
-} = userApi;
+export const { useLoginMutation,useSignupMutation,useLogoutMutation, useUpdateUserMutation } = menuApi;
