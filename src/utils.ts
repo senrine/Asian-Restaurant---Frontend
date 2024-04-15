@@ -2,7 +2,10 @@ import beef_ramen from "./assets/beef_ramen.svg";
 import curry from "./assets/curry.svg";
 import chicken_dumplings from "./assets/chicken_dumplings.svg";
 import pad_thai from "./assets/pad_thai.svg";
-import { User } from "./types";
+import { Order } from "./types";
+import TestimonialPerson1 from "./assets/TestimonnialPerson1.svg";
+import TestimonialPerson2 from "./assets/TestimonnialPerson2.svg";
+import TestimonialPerson3 from "./assets/TestimonnialPerson3.svg";
 
 interface MyObject {
   id: Number;
@@ -15,8 +18,16 @@ interface MyObject {
 export const addPickedVariable = (data: MyObject[]) => {
   return data.map((item) => ({
     ...item,
-    picked: false, // Adding picked property with initial value false
+    picked: false,
   }));
+};
+
+export const addDeliveryVariable = (data: Order[]) => {
+  return {
+    ...data,
+    standardDelivery: true,
+    speedDelivery: false,
+  };
 };
 
 export const getIcon = (iconName: string) => {
@@ -32,9 +43,13 @@ export const getIcon = (iconName: string) => {
   }
 };
 
-
-export const getUpdateFormatData = (data: Object , user:User)=>{
-  if(data.name === ""){data.name = user.name}
-  data.email = user.email;
-  return data
-}
+export const getTestimonialPerson = (indexSlider: number) => {
+  switch (indexSlider) {
+    case 0:
+      return TestimonialPerson1;
+    case 1:
+      return TestimonialPerson2;
+    case 2:
+      return TestimonialPerson3;
+  }
+};

@@ -8,11 +8,10 @@ import { getIcon, addPickedVariable } from "../utils";
 import {
   useCreateOrderApiMutation,
   useUpdateMenuApiMutation,
-  useGetOrderByIDMutation,
 } from "../features/orderApi";
-import { createOrUpdateOrder } from "../features/order";
 import { useNavigate } from "react-router-dom";
 import check from "../assets/CheckWhite.svg";
+import { createOrUpdateOrder } from "../features/order";
 
 export default function Menu() {
   const menus = useSelector((state: RootState) => state.menus);
@@ -32,8 +31,10 @@ export default function Menu() {
       .unwrap()
       .then((response) => {
         const menu = addPickedVariable(response.data);
+        console.log(response);
         dispatch(setMenu(menu));
-      });
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const handleClick = async (e: FormEvent, menu: Menu) => {
@@ -49,11 +50,12 @@ export default function Menu() {
             data: { menuId: [id] },
             id: order.id,
           });
-          dispatch(createOrUpdateOrder(response.data.data));
+          console.log(response);
+          dispatch(createOrUpdateOrder(response));
         } else {
           const response = await createOrderApi({ menuId: [id], userId });
           console.log(response);
-          dispatch(createOrUpdateOrder(response.data.data));
+          dispatch(createOrUpdateOrder(response));
         }
       } catch (err) {
         console.log(err);
@@ -64,7 +66,10 @@ export default function Menu() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center text-primary-white font-Poppins w-full mx-auto">
+    <div
+      id="menu"
+      className="flex flex-col justify-center items-center text-primary-white font-Poppins w-full mx-auto"
+    >
       <hr className="w-full border-primary-white15 mb-20" />
       <div className="mb-20 md:mb-32">
         <h1 className="text-xl md:text-2xl font-semibold">The Menu</h1>

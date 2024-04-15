@@ -17,6 +17,7 @@ export default {
           black50: "#00000080",
           black30: "#0000004D",
           yellow: "#FFA113",
+          gray: "#171717",
         },
       },
       fontSize:{

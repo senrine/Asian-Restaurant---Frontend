@@ -15,7 +15,12 @@ export type User = {
   address: string;
   phoneNumber: number
 }
-
+export type UserDataUpdateForm = {
+  name?: string | undefined;
+  address?: string | undefined;
+  phoneNumber?: number | undefined
+}
+ 
 
 export type Order = {
   id: number;

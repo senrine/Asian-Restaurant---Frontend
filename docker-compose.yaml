@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+    react:
+        container_name: asian-restaurant-front
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - "5173:5173"
+        volumes:
+            - ./:/app
+            - ./node_modules:/app/node_modules

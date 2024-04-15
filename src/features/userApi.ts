@@ -27,7 +27,7 @@ export const menuApi = api.injectEndpoints({
     }),
     updateUser: builder.mutation({
       query: ({data,id}) => ({
-        url: `/users/${id}`,
+        url: `/${id}`,
         method: "PUT",
         credentials: "include",
         body: data

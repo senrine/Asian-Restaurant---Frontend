@@ -1,10 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
 import { useUpdateUserMutation } from "../features/userApi";
-import { getUpdateFormatData } from "../utils";
+import { setCredentials } from "../features/auth";
 
 const validationSchema = z.object({
   name: z.string().optional(),
@@ -15,9 +15,9 @@ const validationSchema = z.object({
 type ValidationSchema = z.infer<typeof validationSchema>;
 
 export default function UpdateUserForm() {
-  const dispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
   const [updateUser] = useUpdateUserMutation();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -29,16 +29,19 @@ export default function UpdateUserForm() {
 
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
     const id = auth.userInfo.id;
-    const newData = getUpdateFormatData(data, auth.userInfo);
-
+    if (data.name === "") {
+      data.name = auth.userInfo.name;
+    }
+    const newData = { ...data, email: auth.userInfo.email };
+    console.log(newData);
+    
     try {
       const response = await updateUser({ data: newData, id }).unwrap();
       console.log(response);
+      dispatch(setCredentials(response.user))
     } catch (err) {
       console.log(err);
     }
-
-    console.log(getUpdateFormatData(data, auth.userInfo));
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -3,8 +3,10 @@ import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserPage from "./components/UserPage";
-import Order from "./components/Order";
 import PrivateRoute from "./components/PrivateRoute";
+import OrderPage from "./components/OrderPage";
+import TestimonialSlider from "./components/TestimonialSlider";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
                 <Navbar />
                 <HeroSection />
                 <Menu />
+                <TestimonialSlider />
+                <Footer />
               </>
             }
           />
@@ -27,6 +31,7 @@ function App() {
               <>
                 <Navbar />
                 <UserPage />
+                <Footer />
               </>
             }
           />
@@ -36,6 +41,7 @@ function App() {
               <>
                 <Navbar />
                 <UserPage />
+                <Footer />
               </>
             }
           />
@@ -45,7 +51,8 @@ function App() {
               element={
                 <>
                   <Navbar />
-                  <Order />
+                  <OrderPage />
+                  <Footer />
                 </>
               }
             />

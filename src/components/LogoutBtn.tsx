@@ -2,24 +2,30 @@ import { FormEvent } from "react";
 import { useLogoutMutation } from "../features/userApi.ts";
 import { useNavigate } from "react-router-dom";
 import { logoutFront } from "../features/auth.ts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Logout from "../assets/Logout.svg";
-import { deleteOrder } from "../features/order.ts";
+import { deleteStoreOrder } from "../features/order.ts";
+import { useDeleteOrderMutation } from "../features/orderApi.ts";
+import { RootState } from "../store.ts";
 
 export default function LogoutBtn() {
   const [logout] = useLogoutMutation();
+  const [deleteOrder] = useDeleteOrderMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // const orders = useSelector((state: RootState) => state.order);
 
   const handleClick = async (e: FormEvent) => {
     e.preventDefault();
 
     try {
-      const response = await logout("").unwrap();
+      const responseLogout = await logout("").unwrap();
+      console.log(responseLogout);
+
       dispatch(logoutFront());
-      dispatch(deleteOrder())
+      dispatch(deleteStoreOrder());
       navigate("/");
-      console.log(response);
     } catch (err) {
       console.log(err);
     }

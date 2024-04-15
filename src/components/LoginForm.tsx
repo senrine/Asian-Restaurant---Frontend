@@ -26,7 +26,7 @@ export default function LoginForm() {
       navigate("/");
       console.log(response.as);
     } catch (err) {
-      setValidation(err?.error || "Invalid Credentials");
+      setValidation("Invalid Credentials");
       console.log(err);
     }
   };

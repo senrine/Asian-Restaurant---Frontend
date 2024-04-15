@@ -3,7 +3,6 @@ import profile from "../assets/Group.svg";
 import basket from "../assets/basket.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import auth from "../features/auth";
 
 export default function Navbar() {
   const auth = useSelector((state: RootState) => state.auth);

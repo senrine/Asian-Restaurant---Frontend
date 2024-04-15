@@ -31,6 +31,31 @@ export const orderApi = api.injectEndpoints({
         },
       }),
     }),
+    deleteOrMinusOneMenu: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/order/${id}`,
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: data,
+      }),
+    }),
+    deleteOrder: builder.mutation({
+      query: (id) => ({
+        url: `/order/${id}`,
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }),
+    }),
   }),
 });
-export const { useCreateOrderApiMutation, useUpdateMenuApiMutation, useGetOrderByIDMutation } = orderApi;
+export const {
+  useCreateOrderApiMutation,
+  useUpdateMenuApiMutation,
+  useGetOrderByIDMutation,
+  useDeleteOrMinusOneMenuMutation,
+  useDeleteOrderMutation
+} = orderApi;

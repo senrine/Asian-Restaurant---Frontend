@@ -11,15 +11,34 @@ const orders = createSlice({
   initialState,
   reducers: {
     createOrUpdateOrder: (state, action) => {
-      state.order = action.payload;
-      localStorage.setItem("order", JSON.stringify(action.payload));
+      state.order = action.payload.data.data;
+      localStorage.setItem("order", JSON.stringify(action.payload.data.data));
     },
-    deleteOrder: (state) => {
+    deleteStoreOrder: (state) => {
       state.order = null;
       localStorage.removeItem("order");
+    },
+    changeDeliveryToStandard: (state) => {
+      state.order = {
+        ...state.order,
+        standardDelivery: true,
+        speedDelivery: false,
+      };
+    },
+    changeDeliveryToSpeed: (state) => {
+      state.order = {
+        ...state.order,
+        speedDelivery: true,
+        standardDelivery: false,
+      };
     },
   },
 });
 
 export default orders.reducer;
-export const { createOrUpdateOrder, deleteOrder } = orders.actions;
+export const {
+  createOrUpdateOrder,
+  deleteStoreOrder,
+  changeDeliveryToStandard,
+  changeDeliveryToSpeed,
+} = orders.actions;
